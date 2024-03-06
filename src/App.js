@@ -1,10 +1,10 @@
 //import logo from './logo.svg';
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import './App.css';
-import Dashboard from './login/dashboard';
+import Dashboard from './screens/nav_screens/dashboard';
 //import { BrowserRouter as Router, Route, Switch, Routes } from 'react-router-dom';
-import Login from './login/login_screen';
-import Signup from './login/Signup';
+import Login from './screens/login/login_screen';
+import Signup from './screens/login/Signup';
 //import signup from './login/signup';
 
 function App() {

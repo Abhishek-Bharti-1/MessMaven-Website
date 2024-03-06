@@ -2,7 +2,7 @@
 import { useState } from 'react'
 //import { Link } from 'react-router-dom';
 import { Switch } from '@headlessui/react'
-import image from './food-image2.jpg'
+import image from '../../assets/food-image2.jpg'
 import { useNavigate, useNavigation } from 'react-router-dom'
 
 function classNames(...classes) {

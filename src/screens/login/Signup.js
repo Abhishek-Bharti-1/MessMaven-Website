@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Switch } from '@headlessui/react'
-import image from './food-image2.jpg'
+import image from '../../assets/food-image2.jpg'
 import { useNavigate } from 'react-router-dom'
 
 function classNames(...classes) {

@@ -1,19 +1,55 @@
 import React from 'react'
-import Navbar from './Navbar';
+import Navbar from '../../components/Navbar';
 import { UserIcon } from '@heroicons/react/24/outline'
-import SearchBar from './SearchBar';
+import SearchBar from '../../components/SearchBar';
 
 
 function generateFullNamesList() {
     const fullNames = [];
     const surnames = [
-      "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez",
-      "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin",
+        "Kapoor",
+        "Singh",
+        "Patel",
+        "Devi",
+        "Kumar",
+        "Sharma",
+        "Das",
+        "Khan",
+        "Ahmed",
+        "Yadav",
+        "Rao",
+        "Gupta",
+        "Trivedi",
+        "Mehta",
+        "Pandey",
+        "Dasgupta",
+        "Mittal",
+        "Joshi",
+        "Bose",
+        " Iyer"
     ];
   
     const firstNames = [
-      "John", "Emma", "Michael", "Sophia", "William", "Olivia", "James", "Ava", "Alexander", "Isabella",
-      "Daniel", "Mia", "Joseph", "Emily", "David", "Charlotte", "Matthew", "Amelia", "Ethan", "Harper",
+        "Aisha", // Female
+        "Arjun", // Male
+        "Diya",   // Female
+        "Rohan",  // Male
+        "Priya",  // Female
+        "Vivaan", // Male
+        "Kiara",  // Female
+        "Neil",   // Male
+        "Ananya", // Female
+        "Yash",    // Male
+        "Siya",    // Female
+        "Aditya", // Male
+        "Saanvi", // Female
+        "Reyansh",// Male
+        "Navya",  // Female
+        "Dev",     // Male
+        "Anika",  // Female
+        "Ishaan", // Male
+        "Zara",   // Female
+        " Veer",  // Male
     ];
   
     while (fullNames.length < 100) {

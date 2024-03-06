@@ -5,8 +5,9 @@ const SearchBar = ({ onSearch }) => {
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+    
     // Pass the search term to the parent component or perform search here
-   // onSearch(e.target.value);
+    onSearch(e.target.value);
   };
 
   return (
