@@ -4,7 +4,7 @@ const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
+    // setSearchTerm(e.target.value);
     
     // Pass the search term to the parent component or perform search here
     onSearch(e.target.value);
@@ -16,7 +16,7 @@ const SearchBar = ({ onSearch }) => {
       <input
         type="text"
         placeholder="Search..."
-        value={searchTerm}
+        // value={searchTerm}
         onChange={handleSearch}
         className="border w-full px-3 py-2 focus:outline-none focus:ring-2"
       />
