@@ -1,0 +1,20 @@
+<body>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.scss">
+    <div id="title">
+      <h1>Meal Inventory Management</h1>
+      <p>Keep track of newly arrived items in the mess</p>
+    </div>
+    <div id="header">
+      <h2>Add an item below</h2>
+      <input id="itemName" type="text" placeholder="Item Name">
+      <input id="itemDescription" type="text" placeholder="Description">
+      <select id="vegNonVeg">
+        <option value="Vegetarian">Vegetarian</option>
+        <option value="Non-Vegetarian">Non-Vegetarian</option>
+      </select>
+      <input id="itemQuantity" type="number" placeholder="Quantity">
+      <button onclick="addToList()">Add</button>
+    </div>
+    <ul id="list"></ul>
+  </body>
