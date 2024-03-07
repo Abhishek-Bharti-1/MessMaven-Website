@@ -4,8 +4,6 @@ import { UserIcon } from '@heroicons/react/24/outline'
 import SearchBar from '../../components/SearchBar';
 import SearchResults from '../../components/SearchResults';
 
-
-
 function generateFullNamesList() {
     const fullNames = [];
     const surnames = [
@@ -66,7 +64,6 @@ function generateFullNamesList() {
 
     return fullNames;
 }
-
 
 export default function Dashboard() {
     // Generate an array of 100 names for demonstration purposes
@@ -139,7 +136,7 @@ export default function Dashboard() {
             </div>
             <div className='px-5 bg-gray-200'>
                 <div className="pt-32 w-full">
-                    <SearchBar onSearch={handleSearch} ></SearchBar>
+                    <SearchBar onSearch={handleSearch} />
                 </div>
                 <h1 className='font-bold text-3xl mt-10 ms-10'>List of Students</h1>
                 <SearchResults data={filteredData} query={searchText}/>
