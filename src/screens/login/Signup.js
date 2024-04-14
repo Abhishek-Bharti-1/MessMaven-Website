@@ -12,6 +12,7 @@ const auth = getAuth(app)
 const db = getFirestore(app);
 
 function classNames(...classes) {
+
     return classes.filter(Boolean).join(' ')
 }
 

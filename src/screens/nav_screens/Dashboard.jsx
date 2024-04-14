@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from '../../components/Navbar';
-import { UserIcon } from '@heroicons/react/24/outline'
+
 import SearchBar from '../../components/SearchBar';
 import SearchResults from '../../components/SearchResults';
 
@@ -10,7 +10,7 @@ function generateFullNamesList() {
         "Kapoor",
         "Singh",
         "Patel",
-        "Devi",
+        "Datt",
         "Kumar",
         "Sharma",
         "Das",
@@ -26,7 +26,7 @@ function generateFullNamesList() {
         "Mittal",
         "Joshi",
         "Bose",
-        " Iyer"
+        "Iyer"
     ];
 
     const firstNames = [
@@ -70,7 +70,7 @@ export default function Dashboard() {
     const names = Array.from({ length: 100 }, (_, index) => `Student ${index + 1}`);
     const full_names = generateFullNamesList();
 
-    const [filteredData, setFilteredData] = useState([]);
+    const [filteredData, setFilteredData] = useState(full_names);
 
     const [searchText, setSearchText] = useState('');
 
@@ -86,55 +86,11 @@ export default function Dashboard() {
     
     return (
         <div>
-            <nav className="bg-gray-800 shadow-lg fixed w-full">
-                <div className="max-w-8xl px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between h-16">
-                        {/* Logo */}
-                        <div className="flex-shrink-0">
-                            <span className="text-white text-2xl font-bold">Mess Maven</span>
-                        </div>
-                        {/* Navigation Links */}
-                        <div className="hidden md:block">
-                            <div className="ml-10 flex items-center space-x-4">
-                                <a
-                                    href="#"
-                                    className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium"
-                                >
-                                    Home
-                                </a>
-                                <a
-                                    href="#"
-                                    className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium"
-                                >
-                                    Announcements
-                                </a>
-                                <a
-                                    href="#"
-                                    className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium"
-                                >
-                                    Extra Items
-                                </a>
-                                <a
-                                    href="#"
-                                    className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium"
-                                >
-                                    Leave
-                                </a>
-                                <div className='border-2 border-grey-500 bg-white rounded-full p-1 mt-3 mb-3'>
-                               
-                                <UserIcon height={35} color='gray-500'></UserIcon>
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </nav>
+           <Navbar/>
             <div>
                 <img src="image" alt=' hgh' className='h-full w-full' ></img>
             </div>
-            <div className='px-5 bg-gray-200'>
+            <div className='px-5 bg-gray-300'>
                 <div className="pt-32 w-full">
                     <SearchBar onSearch={handleSearch} />
                 </div>
