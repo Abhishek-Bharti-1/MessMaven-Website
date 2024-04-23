@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import Navbar from '../../components/Navbar';
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import SearchBar from '../../components/SearchBar';
 import SearchResults from '../../components/SearchResults';
+import { useNavigate, useNavigation } from 'react-router-dom'
 
 function generateFullNamesList() {
     const fullNames = [];
@@ -69,6 +70,7 @@ export default function Dashboard() {
     // Generate an array of 100 names for demonstration purposes
     const names = Array.from({ length: 100 }, (_, index) => `Student ${index + 1}`);
     const full_names = generateFullNamesList();
+    const navigate = useNavigate();
 
     const [filteredData, setFilteredData] = useState(full_names);
 
@@ -78,24 +80,41 @@ export default function Dashboard() {
         setSearchText(query);
 
         setFilteredData(
-          full_names.filter((item) =>
-            item.toLowerCase().includes(query.toLowerCase())
-          )
+            full_names.filter((item) =>
+                item.toLowerCase().includes(query.toLowerCase())
+            )
         );
     };
-    
+
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/auth.user
+            const uid = user.uid;
+            // ...
+        } else {
+            navigate('/login')
+            // User is signed out
+            // ...
+        }
+    });
+
     return (
         <div>
-           <Navbar/>
-            <div>
+            {/* <Navbar /> */}
+            {/* <div>
                 <img src="image" alt=' hgh' className='h-full w-full' ></img>
-            </div>
-            <div className='px-5 bg-gray-300'>
-                <div className="pt-32 w-full">
+            </div> */}
+            <div className='px-5 bg-gray-300 scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-300'>
+                <div className="pt-32 w-full ">
                     <SearchBar onSearch={handleSearch} />
                 </div>
                 <h1 className='font-bold text-3xl mt-10 ms-10'>List of Students</h1>
-                <SearchResults data={filteredData} query={searchText}/>
+                <div className='  overflow-y-auto mt-2  '>
+
+                <SearchResults data={filteredData} query={searchText} />
+                </div>
             </div>
         </div>
     );

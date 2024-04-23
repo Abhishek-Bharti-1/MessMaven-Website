@@ -77,7 +77,7 @@ function Signup() {
             messName: messName.current.value,
             phone: phoneNumber.current.value
         }).then((va) => {
-            navigate('/')
+            navigate('/login')
         });
     }
 
@@ -234,7 +234,7 @@ function Signup() {
                         </button>
                         <h1 className='mt-5 text-lg leading-6 text-gray-600'>
                             Already have an account ?{' '}
-                            <a href="/" className="font-semibold text-indigo-600">
+                            <a href="/login" className="font-semibold text-indigo-600">
                                 Login
                             </a>
                         </h1>

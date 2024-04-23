@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { UserIcon } from '@heroicons/react/24/outline'
+import {  Link } from 'react-router-dom';
 
-const handleClick = () => {
-    // Handle click action here
-    alert('Image clicked!');
-};
 
 const Menu = () => {
     return (
@@ -37,6 +34,11 @@ const Modal = ({ handleClose, show, children }) => {
 const Navbar = (props) => {
 
     const [showModal, setShowModal] = useState(false);
+    const [activeIndex, setActive] = useState("Home");
+
+    const handlePageChange = (pageName) => {
+       setActive(pageName);
+      };
 
     const handleShowModal = () => {
         setShowModal(true);
@@ -52,7 +54,10 @@ const Navbar = (props) => {
         setMenuOpen(!menuOpen);
     };
 
-    return (
+    let x = window.location.href
+
+
+    return (x.includes("/signup") || x.includes("/login") ? null :
         <nav className="fixed w-full">
             <div className="bg-gray-800 max-w-8xl px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
@@ -62,48 +67,54 @@ const Navbar = (props) => {
                     </div>
                     {/* Navigation Links */}
                     <div className="hidden md:block">
-                        <div className="ml-10 flex items-center space-x-4">
-                            <a
-                                href="#"
-                                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium  border-b-2 border-blue-400"
-                            >
-                                Home
-                            </a>
-                            <a
-                                href="#"
-                                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium"
-                            >
-                                Announcements
-                            </a>
-                            <a
-                                href="#"
-                                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium"
-                            >
-                                Menu
-                            </a>
-                            <a
-                                href="#"
-                                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium"
-                            >
-                                Extra Items
-                            </a>
-                            <a
-                                href="#"
-                                className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium"
-                            >
-                                Leave
-                            </a>
-                            <div onClick={toggleMenu} className='border-2 border-grey-500 bg-white rounded-full p-1 mt-3 mb-3'>
-
-                                <UserIcon height={35} color='gray-500'></UserIcon>
+                    
+                            <div className="ml-10 flex items-center space-x-4 text-gray-300">
+                                <Link
+                                    to="/"
+                                    onClick={()=>handlePageChange("Home")}
+                                    className={activeIndex === 'Home' ? 'active  hover:text-white px-3 py-2 text-sm font-medium  border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium'}
+                                    
+                                >
+                                    Home
+                                </Link>
+                                <Link
+                                    to="/announcements"
+                                    onClick={()=>handlePageChange("Announcements")}
+                                    className={activeIndex === 'Announcements' ? 'active  hover:text-white px-3 py-2 text-sm font-medium  border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium  '}
+                                >
+                                    Announcements
+                                </Link>
+                                <Link
+                                    to="/menu"
+                                    onClick={()=>handlePageChange("Menu")}
+                                   className={activeIndex === 'Menu' ? 'active  hover:text-white px-3 py-2 text-sm font-medium border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium '}
+                                >
+                                    Menu
+                                </Link>
+                                <Link
+                                    to="/extra"
+                                    onClick={()=>handlePageChange("Extra")}
+                                   className={activeIndex === 'Extra' ? 'active  hover:text-white px-3 py-2 text-sm font-medium  border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium '}
+                                >
+                                    Extra Items
+                                </Link>
+                                <Link
+                                    to="/leave"
+                                    onClick={()=>handlePageChange("Leave")}
+                                   className={activeIndex === 'Leave' ? 'active  hover:text-white px-3 py-2 text-sm font-medium  border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium  '}
+                                >
+                                    Leave
+                                </Link>
+                                <div onClick={toggleMenu} className='border-2 border-grey-500 bg-white rounded-full p-1 mt-3 mb-3'>
+                                    <UserIcon height={35} color='gray-500'></UserIcon>
+                                </div>
                             </div>
-                        </div>
+                    
                     </div>
                 </div>
             </div>
             {menuOpen && <Menu />}
-        </nav>
-    );
+        </nav>)
 };
 
 export default Navbar;

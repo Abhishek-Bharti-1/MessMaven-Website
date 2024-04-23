@@ -11,7 +11,7 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <div className='flex items-center bg-white border-gray-300 rounded-md focus:ring-blue-500'>
-        <MagnifyingGlassIcon height={40}></MagnifyingGlassIcon>
+        <MagnifyingGlassIcon height={30}></MagnifyingGlassIcon>
       <input
         type="text"
         placeholder="Search..."
