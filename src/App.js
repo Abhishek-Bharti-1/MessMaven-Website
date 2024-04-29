@@ -11,6 +11,7 @@ import Leave from './screens/nav_screens/Leave';
 import Menu from './screens/nav_screens/Menu';
 
 import Navbar from './components/Navbar';
+import Order from './screens/nav_screens/Order';
 //import signup from './login/signup';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/announcements" element={<Announcements />} />
         <Route path="/extra" element={<ExtraItems />} />
         <Route path="/leave" element={<Leave />} />
+        <Route path="/order" element={<Order />} />
         <Route path="/menu" element={<Menu />} />
       </Routes>
     </BrowserRouter>

@@ -18,7 +18,7 @@ function SearchResults({ data, query }) {
     }
 
     return (
-        <div className=' overflow-y-auto'>
+        <div className='overflow-y-auto'>
             {filteredData.length === 0 ? (
                 <p>No results found</p>
             ) : (

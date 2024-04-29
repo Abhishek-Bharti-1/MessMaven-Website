@@ -1,6 +1,6 @@
-
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
+import { PaperAirplaneIcon } from '@heroicons/react/24/outline';
 
 function Announcements() {
   const [messages, setMessages] = useState([]);
@@ -14,38 +14,40 @@ function Announcements() {
 
   return (
     <div>
-    {/* <Navbar/> */}
-    <div className="max-w-lg mx-auto">
-      
-      <div className="bg-gray-300 p-4 rounded-lg">
-        
-        <div className="flex items-end mt-28">
-          <input
-            type="text"
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
-            className="flex-grow border border-gray-300 rounded-l-md px-3 py-2 focus:outline-none focus:border-blue-500"
-            placeholder="Type your message..."
-          />
-          <button
-            onClick={handleMessageSend}
-            className="bg-blue-500 text-white px-4 py-2 rounded-r-md"
-          >
-            Send
-          </button>
-        </div>
-        <ul className="mb-4 mt-12">
-          {messages.map((message, index) => (
-            <li key={index} className="mb-2">
-              <div className='p-4 bg-slate-300 rounded-lg'>
+      {/* <Navbar/> */}
+      <div className="w-full mx-auto">
+        <div className=" p-4 rounded-lg">
+          <h1 className='mt-16 text-3xl font-semibold'>Announcements</h1>
 
-              {message}
-              </div>
-            </li>
-          ))}
-        </ul>
+          <div>
+            <div className='overflow-y-auto mt-4 h-[36rem] bg-slate-300 scrollbar-thin scrollbar-webkit'>
+              <ul className="mb-4">
+                {messages.map((message, index) => (
+                  <li key={index} className="mb-2">
+                    <div className='p-4 bg-blue-300 rounded-lg'>
+                      {message}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex items-strech p-4 rounded-lg bg-blue-800">
+              <input
+                type="text"
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                className="flex-grow ps-2 font-semibold text-black border bg-white border-white rounded-l-md py-2 focus:outline-none focus:border-white"
+                placeholder="Type your message..."
+              />
+              <button
+                onClick={handleMessageSend}
+                className="bg-blue-500 text-white px-4 py-2 rounded-r-md">
+                <PaperAirplaneIcon width={30} />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   );
 };

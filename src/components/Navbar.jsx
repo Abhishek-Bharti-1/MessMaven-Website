@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import { UserIcon } from '@heroicons/react/24/outline'
 import {  Link } from 'react-router-dom';
+import { useNavigate, useNavigation } from 'react-router-dom'
 
 
 const Menu = () => {
+    const navigate = useNavigate();
     return (
-        <div className="menu bg-transparent flex justify-end items-end inline-block">
-            <div className='bg-white py-3 px-4'>
+        <div className="menu bg-transparent flex justify-end items-end">
+            <div className='bg-white rounded-lg py-4 px-4 shadow-xl ease-in-out duration-500'>
                 <ul>
-                    <li>Menu Item 1</li>
-                    <li>Menu Item 2</li>
-                    <li>Menu Item 3</li>
+                    <li>Ajay Kumar Singh</li>
+                    <li>MBH A Mess</li>
+                    <li>NIT Jalandhar</li>
                 </ul>
-                <button className='bg-gray-800 text-white rounded-lg px-4 py-1'>Logout</button>
+                <div className='flex justify-center'>
+
+                <button onClick={()=>{navigate("/login")}} className=' mt-2 bg-blue-800 text-white w-full hover:bg-red-700 rounded-lg px-4 py-1'>Logout</button>
+                </div>
             </div>
         </div>
     );
@@ -56,7 +61,6 @@ const Navbar = (props) => {
 
     let x = window.location.href
 
-
     return (x.includes("/signup") || x.includes("/login") ? null :
         <nav className="fixed w-full">
             <div className="bg-gray-800 max-w-8xl px-4 sm:px-6 lg:px-8">
@@ -67,12 +71,11 @@ const Navbar = (props) => {
                     </div>
                     {/* Navigation Links */}
                     <div className="hidden md:block">
-                    
                             <div className="ml-10 flex items-center space-x-4 text-gray-300">
                                 <Link
                                     to="/"
                                     onClick={()=>handlePageChange("Home")}
-                                    className={activeIndex === 'Home' ? 'active  hover:text-white px-3 py-2 text-sm font-medium  border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium'}
+                                    className={activeIndex === 'Home' ? 'active text-white font-semibold hover:text-white px-3 py-2 text-sm font-medium  border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium'}
                                     
                                 >
                                     Home
@@ -80,36 +83,42 @@ const Navbar = (props) => {
                                 <Link
                                     to="/announcements"
                                     onClick={()=>handlePageChange("Announcements")}
-                                    className={activeIndex === 'Announcements' ? 'active  hover:text-white px-3 py-2 text-sm font-medium  border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium  '}
+                                    className={activeIndex === 'Announcements' ? 'active  text-white font-semibold hover:text-white px-3 py-2 text-sm   border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium  '}
                                 >
                                     Announcements
                                 </Link>
                                 <Link
                                     to="/menu"
                                     onClick={()=>handlePageChange("Menu")}
-                                   className={activeIndex === 'Menu' ? 'active  hover:text-white px-3 py-2 text-sm font-medium border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium '}
+                                   className={activeIndex === 'Menu' ? 'active text-white font-semibold hover:text-white px-3 py-2 text-sm font-medium border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium '}
                                 >
                                     Menu
                                 </Link>
                                 <Link
                                     to="/extra"
                                     onClick={()=>handlePageChange("Extra")}
-                                   className={activeIndex === 'Extra' ? 'active  hover:text-white px-3 py-2 text-sm font-medium  border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium '}
+                                   className={activeIndex === 'Extra' ? 'active text-white font-semibold  hover:text-white px-3 py-2 text-sm font-medium  border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium '}
                                 >
                                     Extra Items
                                 </Link>
                                 <Link
                                     to="/leave"
                                     onClick={()=>handlePageChange("Leave")}
-                                   className={activeIndex === 'Leave' ? 'active  hover:text-white px-3 py-2 text-sm font-medium  border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium  '}
+                                   className={activeIndex === 'Leave' ? 'active text-white font-semibold hover:text-white px-3 py-2 text-sm font-medium  border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium  '}
                                 >
                                     Leave
                                 </Link>
-                                <div onClick={toggleMenu} className='border-2 border-grey-500 bg-white rounded-full p-1 mt-3 mb-3'>
-                                    <UserIcon height={35} color='gray-500'></UserIcon>
+                                <Link
+                                    to="/order"
+                                    onClick={()=>handlePageChange("Order")}
+                                   className={activeIndex === 'Order' ? 'active text-white font-semibold hover:text-white px-3 py-2 text-sm font-medium  border-b-2 border-blue-600' : '  hover:text-white px-3 py-2 text-sm font-medium  '}
+                                >
+                                    Order
+                                </Link>
+                                <div onClick={toggleMenu} className='border-4 border-blue-500 bg-white rounded-full p-1 mt-3 mb-3'>
+                                    <UserIcon height={35} className=' text-gray-600'></UserIcon>
                                 </div>
                             </div>
-                    
                     </div>
                 </div>
             </div>

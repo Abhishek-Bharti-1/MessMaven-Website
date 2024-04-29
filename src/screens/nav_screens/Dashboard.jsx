@@ -106,14 +106,13 @@ export default function Dashboard() {
             {/* <div>
                 <img src="image" alt=' hgh' className='h-full w-full' ></img>
             </div> */}
-            <div className='px-5 bg-gray-300 scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-300'>
+            <div className='px-5 h-screen pb-2 bg-gray-300 overflow-y-hidden scrollbar-thin scrollbar-webkit'>
                 <div className="pt-32 w-full ">
                     <SearchBar onSearch={handleSearch} />
                 </div>
                 <h1 className='font-bold text-3xl mt-10 ms-10'>List of Students</h1>
-                <div className='  overflow-y-auto mt-2  '>
-
-                <SearchResults data={filteredData} query={searchText} />
+                <div className='h-[35rem] overflow-y-auto  scrollbar-thin scrollbar-webkit '>
+                        <SearchResults data={filteredData} query={searchText} className= "" />
                 </div>
             </div>
         </div>
