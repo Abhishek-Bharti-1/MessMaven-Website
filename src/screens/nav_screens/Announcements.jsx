@@ -1,17 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import { PaperAirplaneIcon } from '@heroicons/react/24/outline';
+import { app } from '../../firebase';
+import { getFirestore, collection, getDocs, addDoc, setDoc, doc,onSnapshot } from "firebase/firestore";
 
 function Announcements() {
-  const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
+  const [studentsList, setStudentsList] = useState([]);
+  
 
-  const handleMessageSend = () => {
+  const handleMessageSend = async () => {
     if (inputMessage.trim() === '') return;
-    setMessages([...messages, inputMessage]);
+    const db = getFirestore(app);
+    try {
+      const docRef = await addDoc(collection(db, "announcements"), {
+        message: inputMessage,
+      })// Add data to the collection
+      console.log('Data successfully added!');
+      // Optionally, reset the form or update state
+    } catch (error) {
+      console.error('Error adding data:', error);
+      // Handle potential errors
+    }
+    // setMessages([...messages, inputMessage]);
     setInputMessage('');
   };
 
+  const [facultyOrderList, setfacultyOrderList] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot( // Use onSnapshot for real-time updates
+      collection(getFirestore(app), "announcements"), // Reference the collection
+      (querySnapshot) => {
+        const retrievedStudents = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setStudentsList(retrievedStudents);
+      },
+      (error) => {
+        console.error("Error fetching student data:", error); // Handle errors
+      }
+    );
+    // Cleanup function to unsubscribe from the listener on component unmount
+    return () => unsubscribe();
+  }, []); // Empty dependency array to run only once on component mount
+
+  // console.log(studentsList); 
   return (
     <div>
       {/* <Navbar/> */}
@@ -22,10 +57,10 @@ function Announcements() {
           <div>
             <div className='overflow-y-auto mt-4 h-[36rem] bg-slate-300 scrollbar-thin scrollbar-webkit'>
               <ul className="mb-4">
-                {messages.map((message, index) => (
+                {studentsList.map((message, index) => (
                   <li key={index} className="mb-2">
                     <div className='p-4 bg-blue-300 rounded-lg'>
-                      {message}
+                      {message.message}
                     </div>
                   </li>
                 ))}

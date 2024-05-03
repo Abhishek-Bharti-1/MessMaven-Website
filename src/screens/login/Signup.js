@@ -5,7 +5,7 @@ import image from '../../assets/food-image2.jpg'
 import { useNavigate } from 'react-router-dom'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { app } from '../../firebase'
-import { getFirestore, collection, doc, addDoc,setDoc } from "firebase/firestore";
+import { getFirestore, collection, doc, addDoc, setDoc } from "firebase/firestore";
 
 
 const auth = getAuth(app)
@@ -72,7 +72,7 @@ function Signup() {
     }
 
     const addUserData = async () => {
-        const docRef = await setDoc(doc(db, "Admin",messName.current.value), {
+        const docRef = await setDoc(doc(db, "Admin", messName.current.value), {
             munimName: `${firstName.current.value} ${lastName.current.value}`,
             messName: messName.current.value,
             phone: phoneNumber.current.value
@@ -86,7 +86,12 @@ function Signup() {
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
-        signUpUser();
+        if(agreed){
+            signUpUser();
+        }
+        else{
+            alert("Please Agree to the Terms & Conditions")
+        }
         e.preventDefault();
     }
     return (
@@ -132,18 +137,30 @@ function Signup() {
                             </div>
                         </div>
                         <div className="sm:col-span-2">
-                            <label htmlFor="company" className="block text-sm font-semibold leading-6 text-gray-900">
+                            <label for="company" className="block text-sm font-semibold leading-6 text-gray-900">
                                 Mess Name
                             </label>
-                            <div className="mt-2.5">
-                                <input
-                                    type="text"
+                            <div class="mt-2.5">
+                                <select
                                     name="company"
-                                    //id="company"
                                     ref={messName}
-                                    autoComplete="organization"
                                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                />
+                                >
+                                    <option value="" default>Select Mess</option>
+                                    <option value="MBH A Mess">MBH A Mess</option>
+                                    <option value="MBH B Mess">MBH B Mess</option>
+                                    <option value="MBH F Mess">MBH F Mess</option>
+                                    <option value="BH 1 Mess">BH 1 Mess</option>
+                                    <option value="BH 2 Mess">BH 2 Mess</option>
+                                    <option value="BH 3 Mess">BH 3 Mess</option>
+                                    <option value="BH 4 Mess">BH 4 Mess</option>
+                                    <option value="BH 5 Mess">BH 5 Mess</option>
+                                    <option value="BH 6 Mess">BH 6 Mess</option>
+                                    <option value="BH 7 Mess">BH 7 Mess</option>
+                                    <option value="MGH Mess">MGH Mess</option>
+                                    <option value="GH 1 Mess">GH 1 Mess</option>
+                                    <option value="GH 2 Mess">GH 2 Mess</option>
+                                </select>
                             </div>
                         </div>
                         <div className="sm:col-span-2">
@@ -199,7 +216,7 @@ function Signup() {
                                     checked={agreed}
                                     onChange={setAgreed}
                                     className={classNames(
-                                        agreed ? 'bg-indigo-600' : 'bg-gray-200',
+                                        agreed ? 'bg-indigo-600' : 'bg-gray-400',
                                         'flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
                                     )}
                                 >

@@ -20,7 +20,11 @@ export default function Example() {
     const password = useRef(null);
 
     const handleSubmit = (e) => {
-        loginUser()
+        if(agreed){
+            loginUser()
+        }else{
+            alert("Please Agree to the Terms & Conditions")
+        }
         e.preventDefault();
        
     }
@@ -32,7 +36,6 @@ export default function Example() {
                 // Signed in 
                 const user = userCredential.user;
                 navigate('/')
-                // ...
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -43,7 +46,7 @@ export default function Example() {
     
 
     return (
-        <div style={{ height: 1000, backgroundImage: `url('${image}')`, }} className="  items-center justify-center flex ">
+        <div style={{ height: 1000, backgroundImage: `url('${image}')`, }} className=" bg-no-repeat bg-cover  items-center justify-center flex ">
             <div style={{ width: 600, }} className='bg-white px-10 py-10 rounded-lg'>
                 <div className="mx-auto max-w-2xl text-center">
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Login</h2>
